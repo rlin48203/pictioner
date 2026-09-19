@@ -13,7 +13,6 @@ import {
     SlideFade,
     useDisclosure,
 } from '@chakra-ui/react';
-import va from '@vercel/analytics';
 import { FaComment, FaShare, FaArrowLeft, FaTimes } from 'react-icons/fa';
 
 export const FeedbackCapture = () => {
@@ -28,7 +27,6 @@ export const FeedbackCapture = () => {
         setIsVoted(true);
         switch (type) {
             case 'positive':
-                va.track('feedback-positive');
                 toast({
                     title: 'Thanks for your feedback!',
                     description: 'We appreciate your positive feedback.',
@@ -38,7 +36,6 @@ export const FeedbackCapture = () => {
                 });
                 break;
             case 'neutral':
-                va.track('feedback-neutral');
                 toast({
                     title: 'Thanks for your feedback!',
                     description: 'We will take your feedback into consideration.',
@@ -48,7 +45,6 @@ export const FeedbackCapture = () => {
                 });
                 break;
             case 'negative':
-                va.track('feedback-negative');
                 toast({
                     title: 'Thanks for your feedback!',
                     description: 'We apologize for any inconvenience caused.',
