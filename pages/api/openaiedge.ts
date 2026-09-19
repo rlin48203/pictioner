@@ -39,8 +39,8 @@ export default async function handler(req: NextRequest) {
   const userMessages = history.filter((item) => item.role === "user");
   const assistantMessages = history.filter((item) => item.role === "assistant");
   const lastUser = userMessages[userMessages.length - 1]?.content ?? "";
-  const previousAssistant = assistantMessages[assistantMessages.length - 1]?.content ?? "";
-  const answerMatch = previousAssistant.match(/~\s*Answer:\s*([^~]+)\s*~/i);
+  const answerSource = [...assistantMessages].reverse().find((item) => /~\s*Answer:\s*[^~]+\s*~/i.test(item.content))?.content ?? "";
+  const answerMatch = answerSource.match(/~\s*Answer:\s*([^~]+)\s*~/i);
   let answer = answerMatch?.[1]?.trim() ?? "";
 
   if (!answer) {
