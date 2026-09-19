@@ -12,7 +12,6 @@ import {
 import { GameStart } from "./GameStart";
 import CanvasContainer from "./CanvasContainer";
 import MotionBox from "./MotionBox";
-import ScoreCard from "./ScoreCard";
 
 const AssistantMessage = chakra(Box, {
   baseStyle: {
@@ -456,9 +455,6 @@ export default function Home() {
                         : "再来一次"}
                     </Button>
                   </MotionBox>
-                </Box>
-                <Box>
-                  <ScoreCard currentRound={currentRoundNumber} />
                 </Box>
               </Grid>
             )}
