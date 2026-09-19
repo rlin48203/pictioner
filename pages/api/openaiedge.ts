@@ -54,7 +54,12 @@ export default async function handler(req: NextRequest) {
 
   if (!answer) {
     const pool = Object.keys(drawings);
-    answer = pool[Math.floor(Math.random() * pool.length)];
+    const previousAnswers = [...lastUser.matchAll(/~\s*Answer:\s*([^~]+)\s*~/gi)]
+      .map((match) => match[1].trim())
+      .filter((item) => pool.includes(item));
+    const available = pool.filter((item) => !previousAnswers.includes(item));
+    const candidates = available.length > 0 ? available : pool;
+    answer = candidates[Math.floor(Math.random() * candidates.length)];
   }
 
   const guessCount = Math.max(0, userMessages.length - 1);
