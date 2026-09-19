@@ -14,14 +14,23 @@ const drawings: Record<string, string> = {
   Carrot: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(190,175);ctx.quadraticCurveTo(250,195,310,175);ctx.quadraticCurveTo(300,285,250,350);ctx.quadraticCurveTo(200,285,190,175);ctx.stroke();ctx.beginPath();ctx.moveTo(225,180);ctx.quadraticCurveTo(205,135,220,105);ctx.moveTo(250,185);ctx.quadraticCurveTo(250,125,275,95);ctx.moveTo(275,180);ctx.quadraticCurveTo(300,135,300,110);ctx.stroke();",
   Pizza: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(150,150);ctx.lineTo(350,150);ctx.lineTo(250,360);ctx.closePath();ctx.stroke();ctx.beginPath();ctx.arc(225,215,12,0,6.28);ctx.arc(285,245,12,0,6.28);ctx.arc(250,300,12,0,6.28);ctx.stroke();",
   Guitar: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.arc(235,300,55,0,6.28);ctx.arc(275,250,38,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(260,220);ctx.lineTo(315,120);ctx.lineTo(340,130);ctx.lineTo(285,235);ctx.stroke();ctx.beginPath();ctx.moveTo(315,120);ctx.lineTo(330,95);ctx.moveTo(340,130);ctx.lineTo(355,105);ctx.stroke();",
-  Cat: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.arc(250,255,90,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(180,195);ctx.lineTo(175,130);ctx.lineTo(220,165);ctx.moveTo(320,195);ctx.lineTo(325,130);ctx.lineTo(280,165);ctx.stroke();ctx.beginPath();ctx.arc(220,245,7,0,6.28);ctx.arc(280,245,7,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(250,255);ctx.lineTo(240,265);ctx.lineTo(260,265);ctx.closePath();ctx.stroke();"
+  Cat: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.arc(250,255,90,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(180,195);ctx.lineTo(175,130);ctx.lineTo(220,165);ctx.moveTo(320,195);ctx.lineTo(325,130);ctx.lineTo(280,165);ctx.stroke();ctx.beginPath();ctx.arc(220,245,7,0,6.28);ctx.arc(280,245,7,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(250,255);ctx.lineTo(240,265);ctx.lineTo(260,265);ctx.closePath();ctx.stroke();",
+  Balloon: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.ellipse(250,205,75,95,0,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(250,300);ctx.lineTo(250,390);ctx.stroke();ctx.beginPath();ctx.moveTo(250,300);ctx.lineTo(235,315);ctx.lineTo(250,320);ctx.stroke();",
+  Umbrella: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.arc(250,245,110,Math.PI,0);ctx.stroke();ctx.beginPath();ctx.moveTo(140,245);ctx.lineTo(360,245);ctx.moveTo(250,135);ctx.lineTo(250,350);ctx.quadraticCurveTo(250,390,285,390);ctx.quadraticCurveTo(310,390,310,365);ctx.stroke();",
+  Basketball: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.arc(250,250,105,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(150,250);ctx.quadraticCurveTo(250,215,350,250);ctx.moveTo(250,145);ctx.quadraticCurveTo(215,250,250,355);ctx.moveTo(250,145);ctx.quadraticCurveTo(285,250,250,355);ctx.stroke();",
+  Camera: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.roundRect(135,200,230,145,18);ctx.stroke();ctx.beginPath();ctx.rect(205,175,90,25);ctx.stroke();ctx.beginPath();ctx.arc(250,272,48,0,6.28);ctx.stroke();ctx.beginPath();ctx.arc(250,272,20,0,6.28);ctx.stroke();",
+  Flower: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.arc(250,185,38,0,6.28);ctx.arc(190,220,38,0,6.28);ctx.arc(310,220,38,0,6.28);ctx.arc(220,265,38,0,6.28);ctx.arc(280,265,38,0,6.28);ctx.stroke();ctx.beginPath();ctx.moveTo(250,300);ctx.lineTo(250,390);ctx.moveTo(250,345);ctx.quadraticCurveTo(205,320,185,345);ctx.stroke();",
+  Boat: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(125,285);ctx.lineTo(375,285);ctx.lineTo(330,350);ctx.lineTo(170,350);ctx.closePath();ctx.stroke();ctx.beginPath();ctx.moveTo(250,285);ctx.lineTo(250,150);ctx.lineTo(330,285);ctx.closePath();ctx.stroke();",
+  Pencil: "ctx.strokeStyle='#222';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(170,330);ctx.lineTo(315,185);ctx.lineTo(350,220);ctx.lineTo(205,365);ctx.closePath();ctx.stroke();ctx.beginPath();ctx.moveTo(170,330);ctx.lineTo(155,375);ctx.lineTo(205,365);ctx.stroke();ctx.beginPath();ctx.moveTo(315,185);ctx.lineTo(330,170);ctx.stroke();"
 };
 
 const aliases: Record<string, string[]> = {
   Apple: ["apple", "苹果"], Sun: ["sun", "太阳"], Glasses: ["glasses", "spectacles", "眼镜"],
   Clock: ["clock", "时钟", "钟"], Fish: ["fish", "鱼"], Rocket: ["rocket", "火箭"],
   House: ["house", "home", "房子", "房屋"], Tree: ["tree", "树"], Carrot: ["carrot", "胡萝卜", "萝卜"],
-  Pizza: ["pizza", "披萨", "比萨"], Guitar: ["guitar", "吉他"], Cat: ["cat", "猫", "小猫"]
+  Pizza: ["pizza", "披萨", "比萨"], Guitar: ["guitar", "吉他"], Cat: ["cat", "猫", "小猫"],
+  Balloon: ["balloon", "气球"], Umbrella: ["umbrella", "伞", "雨伞"], Basketball: ["basketball", "篮球"],
+  Camera: ["camera", "相机", "照相机"], Flower: ["flower", "花"], Boat: ["boat", "船"], Pencil: ["pencil", "铅笔"]
 };
 
 function normalize(value: string) {
