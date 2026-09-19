@@ -10,12 +10,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { GameStart } from "./GameStart";
-import va from "@vercel/analytics";
 import CanvasContainer from "./CanvasContainer";
 import MotionBox from "./MotionBox";
 import ScoreCard from "./ScoreCard";
-import { Varta } from "next/font/google";
-import { FeedbackCapture } from "./Feedback";
 
 const AssistantMessage = chakra(Box, {
   baseStyle: {
@@ -81,7 +78,6 @@ export default function Home() {
   const [currentTurn, setCurrentTurn] = useState<"user" | "assistant">("user");
   const [currentRoundNumber, setCurrentRoundNumber] = useState(1);
   const [userInput, setUserinput] = useState<string>("start round 1");
-  const [showNextRoundButton, setNextRoundButton] = useState(false);
   const currentRoundAnswerRef = useRef("");
   const [hasGameStarted, setHasGameStarted] = useState(false);
 
@@ -165,29 +161,6 @@ export default function Home() {
   }, [currentTurn, userInput]);
 
   // Variable to track if logged victory for round already or not
-  const [loggedVictoryForRound, setLoggedVictoryForRound] = useState<number[]>(
-    []
-  );
-
-  React.useEffect(() => {
-    if (!loggedVictoryForRound.includes(currentRoundNumber)) {
-      if (
-        chatHistory.current[chatHistory.current.length - 1]?.content?.includes(
-          "YOU LOSE"
-        )
-      ) {
-        va.track(`game-lost-${currentRoundNumber}`, {
-          content: chatHistory.current[chatHistory.current.length - 1]?.content,
-        });
-      }
-      setLoggedVictoryForRound((prev) => [...prev, currentRoundNumber]);
-    }
-  }, [
-    chatHistory.current[chatHistory.current.length - 1]?.content,
-    currentRoundNumber,
-    loggedVictoryForRound,
-  ]);
-
   return (
     <>
       {!hasGameStarted && (
@@ -216,7 +189,6 @@ export default function Home() {
               >
                 <StartButton
                   onClick={() => {
-                    va.track("game-started");
                     setHasGameStarted(true);
                     setCurrentTurn("assistant");
                   }}
@@ -224,7 +196,7 @@ export default function Home() {
                   shadow={"lg"}
                   mx="auto"
                 >
-                  Start the game
+                  开始游戏
                 </StartButton>
               </MotionBox>
             </Box>
@@ -401,7 +373,7 @@ export default function Home() {
                         backgroundColor={"gray.500"}
                         color={"white"}
                       >
-                        Submit
+                        猜一下
                       </Button>
                     </Box>
                   </Box>
@@ -436,7 +408,6 @@ export default function Home() {
                           ]?.content?.includes("YOU WIN")
                         ) {
                           setCurrentRoundNumber((n) => n + 1);
-                          va.track("game-next-round");
                           previousRoundsDrawings.current.push(
                             chatHistory.current[chatHistory.current.length - 2]
                               ?.content
@@ -458,10 +429,8 @@ export default function Home() {
                               canvasRef.current.height
                             );
                           chatHistory.current = []; // Remove everything from chat history except the last element
-                          setNextRoundButton(false);
                         } else {
                           setCurrentRoundNumber(1);
-                          va.track("game-retry");
                           previousRoundsDrawings.current = [];
                           setUserinput(`start round 1`);
                           setCurrentTurn("assistant");
@@ -483,8 +452,8 @@ export default function Home() {
                       {chatHistory.current[
                         chatHistory.current.length - 1
                       ]?.content?.includes("YOU WIN")
-                        ? "Start next round"
-                        : "Retry"}
+                        ? "下一题"
+                        : "再来一次"}
                     </Button>
                   </MotionBox>
                 </Box>
@@ -516,7 +485,6 @@ export default function Home() {
           )}
         </Box>
       )}
-      {hasGameStarted && <FeedbackCapture />}
     </>
   );
 }
