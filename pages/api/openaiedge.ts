@@ -60,7 +60,30 @@ export default async function handler(req: NextRequest) {
 }
 
 function streamDrawing(drawing: string, answer: string) {
-  return streamText(drawing + ";~ Answer: " + answer + " ~");
+  const encoder = new TextEncoder();
+  const readable = new ReadableStream({
+    start(controller) {
+      const emit = (value: string) => {
+        const payload = JSON.stringify({ choices: [{ delta: { content: value } }] });
+        controller.enqueue(encoder.encode("data: " + payload + "\n\n"));
+      };
+      emit(drawing);
+      emit(";");
+      emit("~ Answer: " + answer + " ~");
+      controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+      controller.enqueue(encoder.encode("[DONE]"));
+      controller.close();
+    }
+  });
+  return new Response(readable, {
+    headers: {
+      "Cache-Control": "no-cache, no-transform",
+      "Content-Type": "text/event-stream",
+      "Access-Control-Allow-Origin": "*",
+      "Connection": "keep-alive",
+      "Content-Encoding": "none"
+    }
+  });
 }
 
 function streamText(text: string) {
