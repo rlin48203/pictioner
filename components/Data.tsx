@@ -252,27 +252,15 @@ export default function Home() {
                 status="info"
                 borderRadius="md"
                 boxShadow="0 2px 4px 0 rgba(0,0,0,0.1)"
-                className="selected-code"
                 p={4}
                 mb={4}
               >
-                <Text mb={3} wordBreak="break-word">
-                  哥哥画 · 小梨猜
+                <Text wordBreak="break-word" fontWeight="bold">
+                  🐶 哥哥画 · 🍐 小梨猜
                 </Text>
-                <Button
-                  onClick={() => {
-                    window.location.href =
-                      "https://chat.openai.com/g/g-4201Mfab3-pictioner";
-                  }}
-                  size="md"
-                  shadow="md"
-                  colorScheme="blue"
-                  width="full"
-                  ml={5}
-                  borderRadius="md"
-                >
-                  Start guessing!
-                </Button>
+                <Text mt={2} fontSize="sm">
+                  本地免 API 版本：哥哥负责画，小梨负责猜。偷偷看答案可不算哦～
+                </Text>
               </Alert>
             </Box>
           }
