@@ -232,7 +232,7 @@ export default function Home() {
           {
             <Alert status="warning" mb={4}>
               <AlertIcon />
-              {`This game doesnot work well on mobile based browsers yet!`}
+              {`This version uses local drawings — no OpenAI API key or API recharge is needed!`}
             </Alert>
           }
           {
@@ -257,7 +257,7 @@ export default function Home() {
                 mb={4}
               >
                 <Text mb={3} wordBreak="break-word">
-                  Try the new Pictioner GPT Agent powered by ChatGPT+!
+                  哥哥画 · 小梨猜
                 </Text>
                 <Button
                   onClick={() => {
@@ -271,7 +271,7 @@ export default function Home() {
                   ml={5}
                   borderRadius="md"
                 >
-                  Try Now!
+                  Start guessing!
                 </Button>
               </Alert>
             </Box>
