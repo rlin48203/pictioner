@@ -1,7 +1,7 @@
 ## Pictioner
 
-Pictioner is a fun game that you can play with GPT.
-GPT draws something on the canvas that the user needs to guess within three tries.
+This fork is a local, no-API version of Pictioner.
+The computer draws a simple sketch on the canvas, and the user guesses within three tries.
 
 ## Play the game
 The game is hosted on [pictioner.com](https://pictioner.com/) and can be played there.
@@ -10,7 +10,7 @@ The game is hosted on [pictioner.com](https://pictioner.com/) and can be played 
 
 - [Next.js](https://nextjs.org/)
 - [Chakra UI](https://chakra-ui.com/)
-- [OpenAI API](https://beta.openai.com/)
+- Local Canvas drawings (no OpenAI API required)
 - [Vercel](https://vercel.com/)
 
 ## Code quality
@@ -19,23 +19,16 @@ Please feel free to contribute to the project to improve the code quality.
 
 ## Getting Started
 
-First, create a file called .env.local in the root directory of the project.
-Then, add the following environment variables to the file:
-
-```
-OPENAI_API_KEY=<your openai api key>
-```
-Then, run the development server:
+Install the dependencies and start the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the game.
+Open [http://localhost:3000](http://localhost:3000) with the game.
+
+**No `OPENAI_API_KEY` is required for this fork.**
 
 ## Contributing
 
